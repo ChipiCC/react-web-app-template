@@ -165,8 +165,9 @@ requires the CI check. Both are configured for this repository.
 
 Patch-only auto-merge is deliberately conservative. To widen it, change the condition in the
 workflow and update the ruleset; do not auto-merge minor or major updates without reviewing the
-release notes. Dependabot alerts and security updates are enabled in the repository settings and
-open PRs as advisories are published.
+release notes. Dependabot alerts and automated security updates are enabled in the repository
+settings. GitHub does not yet support Dependabot security updates for Bun, so run `bun audit`
+before releases.
 
 ## Using this template
 
