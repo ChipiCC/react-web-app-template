@@ -1,0 +1,138 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+@theme inline {
+  --color-canvas: var(--app-canvas);
+  --color-surface: var(--app-surface);
+  --color-surface-raised: var(--app-surface-raised);
+  --color-surface-hover: var(--app-surface-hover);
+  --color-line: var(--app-line);
+  --color-ink: var(--app-ink);
+  --color-muted: var(--app-muted);
+  --color-faint: var(--app-faint);
+  --color-accent: var(--app-accent);
+  --color-accent-strong: var(--app-accent-strong);
+  --color-positive: var(--app-positive);
+  --color-negative: var(--app-negative);
+  --color-warning: var(--app-warning);
+  --color-info: var(--app-info);
+
+  --font-sans: var(--app-font-sans);
+  --font-mono: var(--app-font-mono);
+}
+
+:root {
+  --app-canvas: #f6f8fb;
+  --app-surface: #ffffff;
+  --app-surface-raised: #eef3f9;
+  --app-surface-hover: #e4ecf7;
+  --app-line: #d7e0ec;
+  --app-ink: #0f172a;
+  --app-muted: #526173;
+  --app-faint: #788697;
+  --app-accent: #0f766e;
+  --app-accent-strong: #115e59;
+  --app-positive: #047857;
+  --app-negative: #be123c;
+  --app-warning: #b45309;
+  --app-info: #1d4ed8;
+  --app-font-sans:
+    ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --app-font-mono:
+    'SFMono-Regular', ui-monospace, 'Cascadia Code', 'Roboto Mono', Menlo, Consolas, monospace;
+
+  color-scheme: light;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[data-theme='dark'] {
+  --app-canvas: #070a0f;
+  --app-surface: #0d121a;
+  --app-surface-raised: #121924;
+  --app-surface-hover: #17202d;
+  --app-line: #202b3a;
+  --app-ink: #e8eef7;
+  --app-muted: #94a3b8;
+  --app-faint: #687588;
+  --app-accent: #4fd1c5;
+  --app-accent-strong: #2bb9ad;
+  --app-positive: #34d399;
+  --app-negative: #fb7185;
+  --app-warning: #fbbf24;
+  --app-info: #60a5fa;
+
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--app-canvas);
+  background-image:
+    radial-gradient(
+      circle at 12% -10%,
+      color-mix(in oklab, var(--app-accent) 10%, transparent),
+      transparent 34rem
+    ),
+    radial-gradient(
+      circle at 88% 0%,
+      color-mix(in oklab, var(--app-info) 8%, transparent),
+      transparent 30rem
+    );
+  color: var(--app-ink);
+  font-family: var(--app-font-sans);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+a,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--app-accent) 30%, transparent);
+}
+
+*:focus-visible {
+  outline: 2px solid var(--app-accent);
+  outline-offset: 2px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 3px solid transparent;
+  border-radius: 999px;
+  background: var(--app-line);
+  background-clip: content-box;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

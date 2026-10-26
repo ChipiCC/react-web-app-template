@@ -1,0 +1,19 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "default_agent": "build",
+  "formatter": true,
+  "watcher": {
+    "ignore": ["node_modules/**", "dist/**", "coverage/**"]
+  },
+  "permissions": [
+    { "action": "read", "resource": ".env", "effect": "deny" },
+    { "action": "read", "resource": ".env.local", "effect": "deny" },
+    { "action": "edit", "resource": ".env", "effect": "deny" },
+    { "action": "edit", "resource": ".env.local", "effect": "deny" },
+    { "action": "edit", "resource": "bun.lock", "effect": "deny" },
+    { "action": "shell", "resource": "git push *", "effect": "ask" },
+    { "action": "shell", "resource": "git reset --hard *", "effect": "ask" },
+    { "action": "shell", "resource": "git clean *", "effect": "ask" },
+    { "action": "shell", "resource": "rm -rf *", "effect": "ask" }
+  ]
+}
