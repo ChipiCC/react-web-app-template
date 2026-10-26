@@ -168,6 +168,8 @@ user and keep `code` for programmatic handling.
 - `bun.lock` is generated. Update dependencies with `bun update` (or `bun add` / `bun remove`);
   never edit the lockfile by hand.
 - Security updates are enabled on the repository. Treat them as urgent and review the advisory.
+- GitHub does not yet support Dependabot security updates for Bun. Run `bun audit` before releases
+  and review advisories manually.
 
 ## Code style
 
