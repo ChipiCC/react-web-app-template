@@ -157,6 +157,18 @@ user and keep `code` for programmatic handling.
 - Add tests for the failure path whenever you add a data-driven view.
 - Playwright is not included by default. Add it when the product needs end-to-end coverage.
 
+## Dependency updates
+
+- Dependabot is the only dependency bot. Do not add Renovate or a second updater.
+- `.github/dependabot.yml` watches Bun (`package.json` + `bun.lock`) and GitHub Actions weekly.
+- `.github/workflows/dependabot-automerge.yml` auto-merges PRs whose highest bump is a patch.
+  Minor and major updates are reviewed manually.
+- Keep the required CI check name (`Lint, types, tests, build`) in sync with the `master` ruleset
+  if you rename the CI job.
+- `bun.lock` is generated. Update dependencies with `bun update` (or `bun add` / `bun remove`);
+  never edit the lockfile by hand.
+- Security updates are enabled on the repository. Treat them as urgent and review the advisory.
+
 ## Code style
 
 - Strict TypeScript. Avoid `any`; prefer discriminated unions and explicit guards.

@@ -7,6 +7,7 @@ A production-ready frontend template for React single-page apps.
 - **Quality:** strict TypeScript, ESLint, Prettier, Vitest, React Testing Library, MSW
 - **Design:** semantic theme tokens with light, dark, and system preference support
 - **CI:** GitHub Actions running lint, format, typecheck, tests, and build
+- **Automation:** Dependabot updates with CI-gated patch auto-merge
 
 The template ships a landing page and a working API example so you can see the intended structure
 before replacing it with your first real feature.
@@ -143,6 +144,29 @@ between tests.
 
 No deploy job is included. The template is a static SPA; `vercel.json` provides the required
 fallback. Configure an equivalent rewrite (`/* -> /index.html`) on other static hosts.
+
+## Dependency updates
+
+Dependabot keeps Bun packages and GitHub Actions current. It is configured in
+`.github/dependabot.yml`:
+
+| Ecosystem      | Schedule | Grouping                         |
+| -------------- | -------- | -------------------------------- |
+| Bun            | Weekly   | Minor and patch updates together |
+| GitHub Actions | Weekly   | Individual PRs                   |
+
+Major updates arrive one per PR so breaking changes get individual review.
+`.github/workflows/dependabot-automerge.yml` enables auto-merge for Dependabot PRs whose **highest**
+bump is a patch. Auto-merge completes only after the required `Lint, types, tests, build` check
+passes on `master`.
+
+The repository must have **Allow auto-merge** enabled and a branch ruleset on `master` that
+requires the CI check. Both are configured for this repository.
+
+Patch-only auto-merge is deliberately conservative. To widen it, change the condition in the
+workflow and update the ruleset; do not auto-merge minor or major updates without reviewing the
+release notes. Dependabot alerts and security updates are enabled in the repository settings and
+open PRs as advisories are published.
 
 ## Using this template
 
