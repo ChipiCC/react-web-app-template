@@ -132,7 +132,7 @@ between tests.
 
 ## CI
 
-`.github/workflows/ci.yml` runs on pushes to `main` and on pull requests:
+`.github/workflows/ci.yml` runs on pushes to `master` and on pull requests:
 
 1. `bun install --frozen-lockfile`
 2. `bun run lint`
